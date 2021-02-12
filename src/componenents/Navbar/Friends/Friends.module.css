@@ -1,0 +1,6 @@
+.friends {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, auto));
+  grid-gap: 5px;
+  margin-top: 15px;
+}
