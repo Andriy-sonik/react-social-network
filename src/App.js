@@ -7,6 +7,7 @@ import Profile from "./componenents/Profile/Profile";
 import News from "./componenents/News/News";
 import Music from "./componenents/Music/Music";
 import Setting from "./componenents/Setting/Setting";
+import UsersContainers from "./componenents/Users/UsersContainer";
 
 const App = (props) => {
   return (
@@ -16,6 +17,7 @@ const App = (props) => {
       <div className="app-wrapper-content">
         <Route path="/profile" render={() => <Profile />} />
         <Route path="/dialogs" render={() => <DialogsContainer />} />
+        <Route path="/users" render={() => <UsersContainers />} />
         <Route path="/news" component={News} />
         <Route path="/music" component={Music} />
         <Route path="/setting" component={Setting} />
