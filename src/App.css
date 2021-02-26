@@ -1,3 +1,6 @@
+html{
+  background: url('../src/assets/images/body_bg.png');
+}
 .app-wrapper {
   display: grid;
   max-width: 1200px;
