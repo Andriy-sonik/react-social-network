@@ -1,4 +1,9 @@
-.usersPhoto{
-    width: 100px;
-    height: 100px;
+.usersPhoto {
+  width: 100px;
+  height: 100px;
+}
+.selectedPage {
+  font-weight: 700;
+  color: #fff;
+  background-color: green;
 }
