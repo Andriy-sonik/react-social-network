@@ -1,5 +1,10 @@
+import Preloader from "../../common/Preloader/Preloader";
 import s from "./ProfileInfo.module.css";
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
+
   return (
     <div>
       <img
@@ -7,7 +12,9 @@ const ProfileInfo = () => {
         src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/sisters-horses-panorama-twenty-two-north-photography.jpg"
       />
       <div className={s.descriptionBlock}>
-        <img src="https://i.pinimg.com/originals/29/6e/b2/296eb2e1c79994d7e631fc9ecc3d506b.jpg" />
+        <img src={props.profile.photos.large} />
+        <div>{props.profile.aboutMe}</div>
+        <div>{props.profile.lookingForAJobDescription}</div>
       </div>
     </div>
   );

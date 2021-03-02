@@ -3,7 +3,7 @@ import "./App.css";
 import DialogsContainer from "./componenents/Dialogs/DialogsContainer";
 import Header from "./componenents/Header/Header";
 import Navbar from "./componenents/Navbar/Navbar";
-import Profile from "./componenents/Profile/Profile";
+import ProfileContainer from "./componenents/Profile/ProfileContainer";
 import News from "./componenents/News/News";
 import Music from "./componenents/Music/Music";
 import Setting from "./componenents/Setting/Setting";
@@ -15,7 +15,7 @@ const App = (props) => {
       <Header />
       <Navbar />
       <div className="app-wrapper-content">
-        <Route path="/profile" render={() => <Profile />} />
+        <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
         <Route path="/dialogs" render={() => <DialogsContainer />} />
         <Route path="/users" render={() => <UsersContainers />} />
         <Route path="/news" component={News} />
