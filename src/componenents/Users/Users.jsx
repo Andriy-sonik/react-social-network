@@ -1,3 +1,4 @@
+import axios from "axios";
 import s from "./Users.module.css";
 import userPhoto from "../../assets/images/userDefault.jpg";
 import { NavLink } from "react-router-dom";
@@ -10,22 +11,6 @@ let Users = (props) => {
   }
   return (
     <div>
-      <div className={s.paginations}>
-        {pages.map((p) => {
-          return (
-            <button
-              className={props.currentPage === p ? s.selectedPage : null}
-              key={p}
-              onClick={() => {
-                props.onPageChanged(p);
-              }}
-            >
-              {p}
-            </button>
-          );
-        })}
-      </div>
-      <hr />
       <div className={s.users}>
         {props.users.map((u) => (
           <div key={u.id} className={s.user}>
@@ -43,7 +28,21 @@ let Users = (props) => {
                 {u.followed ? (
                   <button
                     onClick={() => {
-                      props.unfollow(u.id);
+                      axios
+                        .delete(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                          {
+                            withCredentials: true,
+                            headers: {
+                              "API-KEY": "93cbc3cd-6938-4d1a-b91b-05666ea70cee",
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          if (response.data.resultCode === 0) {
+                            props.unfollow(u.id);
+                          }
+                        });
                     }}
                   >
                     Unfollow
@@ -51,7 +50,22 @@ let Users = (props) => {
                 ) : (
                   <button
                     onClick={() => {
-                      props.follow(u.id);
+                      axios
+                        .post(
+                          `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                          {},
+                          {
+                            withCredentials: true,
+                            headers: {
+                              "API-KEY": "93cbc3cd-6938-4d1a-b91b-05666ea70cee",
+                            },
+                          }
+                        )
+                        .then((response) => {
+                          if (response.data.resultCode === 0) {
+                            props.follow(u.id);
+                          }
+                        });
                     }}
                   >
                     Follow
@@ -71,6 +85,22 @@ let Users = (props) => {
             </div>
           </div>
         ))}
+      </div>
+      <hr />
+      <div className={s.paginations}>
+        {pages.map((p) => {
+          return (
+            <button
+              className={props.currentPage === p ? s.selectedPage : null}
+              key={p}
+              onClick={() => {
+                props.onPageChanged(p);
+              }}
+            >
+              {p}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
