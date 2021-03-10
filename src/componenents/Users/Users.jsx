@@ -32,13 +32,7 @@ let Users = (props) => {
                       (id) => id === u.id
                     )}
                     onClick={() => {
-                      props.toggleFollowingProgress(true, u.id);
-                      followAPI.deleteFollow(u.id).then((response) => {
-                        if (response.data.resultCode === 0) {
-                          props.unfollow(u.id);
-                        }
-                        props.toggleFollowingProgress(false, u.id);
-                      });
+                      props.unfollow(u.id);
                     }}
                   >
                     Unfollow
@@ -49,13 +43,7 @@ let Users = (props) => {
                       (id) => id === u.id
                     )}
                     onClick={() => {
-                      props.toggleFollowingProgress(true, u.id);
-                      followAPI.postFollow(u.id).then((response) => {
-                        if (response.data.resultCode === 0) {
-                          props.follow(u.id);
-                        }
-                        props.toggleFollowingProgress(false, u.id);
-                      });
+                      props.follow(u.id);
                     }}
                   >
                     Follow
@@ -84,6 +72,7 @@ let Users = (props) => {
               className={props.currentPage === p ? s.selectedPage : null}
               key={p}
               onClick={() => {
+                console.log(p, props.currentPage);
                 props.onPageChanged(p);
               }}
             >
