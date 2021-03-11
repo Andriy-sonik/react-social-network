@@ -8,6 +8,7 @@ import News from "./componenents/News/News";
 import Music from "./componenents/Music/Music";
 import Setting from "./componenents/Setting/Setting";
 import UsersContainers from "./componenents/Users/UsersContainer";
+import Login from "./componenents/Login/Login";
 
 const App = (props) => {
   return (
@@ -18,6 +19,7 @@ const App = (props) => {
         <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
         <Route path="/dialogs" render={() => <DialogsContainer />} />
         <Route path="/users" render={() => <UsersContainers />} />
+        <Route path="/login" component={Login} />
         <Route path="/news" component={News} />
         <Route path="/music" component={Music} />
         <Route path="/setting" component={Setting} />

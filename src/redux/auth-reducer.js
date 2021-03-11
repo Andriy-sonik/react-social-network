@@ -4,7 +4,7 @@ const initialState = {
   userId: null,
   email: null,
   login: null,
-  isAuth: null,
+  isAuth: false,
   isFetching: false,
 };
 
