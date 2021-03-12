@@ -72,7 +72,6 @@ let Users = (props) => {
               className={props.currentPage === p ? s.selectedPage : null}
               key={p}
               onClick={() => {
-                console.log(p, props.currentPage);
                 props.onPageChanged(p);
               }}
             >
