@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component, PureComponent } from "react";
 import { Field, reduxForm } from "redux-form";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
@@ -9,7 +9,10 @@ import {
 } from "./../../../utils/validators/validators";
 
 const maxLength10 = maxLengthCreator(10);
-const MyPost = (props) => {
+const MyPost = React.memo((props) => {
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return nextProps != this.props || nextState != this.state;
+  // }
   let postsElements = props.posts.map((el) => (
     <Post message={el.message} likesCount={el.likesCount} key={el.id} />
   ));
@@ -25,7 +28,7 @@ const MyPost = (props) => {
       <div className={s.posts}>{postsElements}</div>
     </div>
   );
-};
+});
 const AddPostForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
