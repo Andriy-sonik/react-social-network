@@ -8,10 +8,6 @@ const ProfileInfo = (props) => {
 
   return (
     <div>
-      {/* <img
-        className="imgResponsive"
-        src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/sisters-horses-panorama-twenty-two-north-photography.jpg"
-      /> */}
       <div className={s.descriptionBlock}>
         <img src={props.profile.photos.large} />
         <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>

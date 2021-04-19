@@ -2,24 +2,7 @@
   width: 100px;
   height: 100px;
 }
-.selectedPage {
-  font-weight: 700;
-  color: #fff;
-  background-color: green;
-}
-.paginations {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30px, 50px));
-  grid-gap: 4.2px;
-  padding: 10px;
-}
-.paginations button:hover {
-  cursor: pointer;
-  background-color: rgb(102, 101, 101);
-  border: 1px solid #666;
-  border-radius: 3px;
-  color: #fff;
-}
+
 .users {
   display: grid;
   grid-row-gap: 10px;

@@ -1,3 +1,4 @@
+import { Field } from "redux-form";
 import styles from "./FormControls.module.css";
 
 const FromControl = ({ input, meta, child, ...props }) => {
@@ -29,3 +30,4 @@ export const myInput = (props) => {
     </FromControl>
   );
 };
+
