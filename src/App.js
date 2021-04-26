@@ -1,5 +1,9 @@
-import { Route, withRouter } from "react-router-dom";
-import { Component } from "react";
+import { Route, withRouter, BrowserRouter } from "react-router-dom";
+import React, { Component } from "react";
+import { connect, Provider } from "react-redux";
+import { compose } from "redux";
+import { initializeApp } from "./redux/app-reducer";
+import store from "./redux/redux-store";
 import "./App.css";
 import DialogsContainer from "./componenents/Dialogs/DialogsContainer";
 import HeaderContainer from "./componenents/Header/HeaderContainer";
@@ -10,9 +14,6 @@ import Music from "./componenents/Music/Music";
 import Setting from "./componenents/Setting/Setting";
 import UsersContainers from "./componenents/Users/UsersContainer";
 import Login from "./componenents/Login/Login";
-import { initializeApp } from "./redux/app-reducer";
-import { connect } from "react-redux";
-import { compose } from "redux";
 import Preloader from "./componenents/common/Preloader/Preloader";
 
 class App extends Component {
@@ -49,7 +50,19 @@ let mapStateToProps = (state) => ({
   initialized: state.app.initialized,
 });
 
-export default compose(
+let AppContainer = compose(
   withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App);
+let SamuraiJSApp = () => {
+  return (
+    <React.StrictMode>
+      <BrowserRouter>
+        <Provider store={store}>
+          <AppContainer />
+        </Provider>
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+};
+export default SamuraiJSApp;
